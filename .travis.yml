@@ -8,6 +8,7 @@ env:
 services:
   - docker
 before_install:
+  - apt-get -qq update
   - curl -o vagrant.zip vagrant.zip https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_linux_amd64.zip && unzip -d bin vagrant.zip
   - vagrant version
 jobs:
