@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 2.5
+env:
+  global:
+  - VAGRANT_VERSION="2.2.6"
+install:
+  - bundle install
+  - curl -o vagrant.zip vagrant.zip https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_linux_amd64.zip && unzip -d bin vagrant.zip
+  - vagrant version
+script:
+  - PATH=$(pwd)/bin:$PATH bundle exec rake
+  - PATH=$(pwd)/bin:$PATH bundle exec rake vagrant:validate
+  - PATH=$(pwd)/bin:$PATH bundle exec rake --tasks
