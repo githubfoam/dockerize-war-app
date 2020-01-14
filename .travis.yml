@@ -1,4 +1,5 @@
 language: ruby
+dist: disco
 rvm:
   - 2.5
 env:
