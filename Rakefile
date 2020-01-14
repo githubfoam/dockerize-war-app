@@ -21,7 +21,7 @@ namespace :vagrant do
   task :validate do
     Pathname.glob('*Vagrantfile*').sort.each do |template|
       puts Rainbow("Validating #{template}...").green
-      unless system "vagrant validate #{template}"
+      unless system "vagrant validate --ignore-provider #{template}"
         puts Rainbow("#{template} is not a valid vagrant file").red
         raise "#{template} is not a valid vagrant file"
       end
