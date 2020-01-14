@@ -14,24 +14,21 @@ before_install:
   - curl -o vagrant.zip https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_linux_amd64.zip && unzip -d bin vagrant.zip
   - PATH=$(pwd)/bin:$PATH
   - vagrant version
-
 jobs:
   include:
     - stage: Vagrant validate
       before_script: skip
       script:
         - gem install bundler #Install Bundler
-        - sudo bundle install #Install Required Gems
+        - bundle install #Install Required Gems
         - gem list #gem list
         - gem show rake #view where a particular gem has been installed
         - PATH=$(pwd)/bin:$PATH bundle exec rake
         - PATH=$(pwd)/bin:$PATH bundle exec rake vagrant:validate
         - PATH=$(pwd)/bin:$PATH bundle exec rake --tasks
-
 after_success:
     - stage: Continuous Deployment Step, one button to deploy docker image
       script: skip
-
 notifications:
   #email: false
    email:
