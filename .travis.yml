@@ -11,6 +11,7 @@ services:
 before_install:
   - sudo apt-get -qq update
   - curl -o vagrant.zip https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_linux_amd64.zip && unzip -d bin vagrant.zip
+  - PATH=$(pwd)/bin:$PATH
   - vagrant version
 jobs:
   include:
