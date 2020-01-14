@@ -25,10 +25,7 @@ jobs:
     #     - PATH=$(pwd)/bin:$PATH bundle exec rake vagrant:validate
     #     - PATH=$(pwd)/bin:$PATH bundle exec rake --tasks
     - stage: build_base
-      script:
-      - pwd
-      - ls -lai
-      - sudo make build_base
+      script: sudo make build_base
     - stage: build_env
       script: sudo make build_base
     - stage: build_openjdk11

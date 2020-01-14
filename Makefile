@@ -8,7 +8,7 @@ build_openjdk11:
 	@docker build . --target build_openjdk11 -t centos7/tomcat:build_openjdk11 --file dockerfiles/Dockerfile.tomcat.multi
 
 build_tomcat9030:
-	@docker build . --target build_tomcat9030 -t centos7/tomcat:build_tomcat9030 --file dockerfiles/Dockerfile.tomcat.multi
+	@docker build . --target build_tomcat9030_openjdk11 -t centos7/tomcat:build_tomcat9030_openjdk11 --file dockerfiles/Dockerfile.tomcat.multi
 
 config_admin:
 	@docker build . --target config_admin -t centos7/tomcat:config_admin --file dockerfiles/Dockerfile.tomcat.multi
