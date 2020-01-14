@@ -22,12 +22,15 @@ jobs:
         - gem install bundler #Install Bundler
         - bundle install #Install Required Gems
         - gem list #gem list
-        - PATH=$(pwd)/bin:$PATH bundle exec rake
         - PATH=$(pwd)/bin:$PATH bundle exec rake vagrant:validate
         - PATH=$(pwd)/bin:$PATH bundle exec rake --tasks
+    - stage: build_base
+      script:
+        - sudo make build_base
 after_success:
     - stage: Continuous Deployment Step, one button to deploy docker image
-      script: skip
+      script:
+        - sudo docker image ls
 notifications:
   #email: false
    email:
