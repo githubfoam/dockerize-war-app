@@ -20,12 +20,6 @@ sudo yum install -y docker-ce \
               docker-ce-cli \
               containerd.io
 sudo systemctl start docker && sudo docker --version
-# Install Terraform
-sudo yum install unzip -y
-wget -q -nc https://releases.hashicorp.com/terraform/0.12.18/terraform_0.12.18_linux_amd64.zip
-unzip terraform_0.12.18_linux_amd64.zip
-sudo mv terraform /usr/local/bin/
-terraform version
 SCRIPT
 $ubuntu_docker_script = <<SCRIPT
 # Get Docker Engine - Community for Ubuntu
@@ -51,12 +45,6 @@ sudo docker --version
 sudo groupadd docker && sudo usermod -aG docker vagrant # add user to the docker group
 sudo systemctl enable docker
 docker --version
-# Install Terraform
-sudo apt-get install unzip -y
-wget -q -nc https://releases.hashicorp.com/terraform/0.12.18/terraform_0.12.18_linux_amd64.zip
-unzip terraform_0.12.18_linux_amd64.zip
-sudo mv terraform /usr/local/bin/
-terraform version
 SCRIPT
 
 Vagrant.configure(2) do |config|

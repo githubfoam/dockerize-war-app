@@ -2,7 +2,6 @@ language: ruby
 dist: disco
 sudo: required
 rvm:
-  # - 2.5
   - 2.7
 env:
   global:
