@@ -16,21 +16,37 @@ before_install:
   - vagrant version
 jobs:
   include:
-    - stage: Vagrant validate
-      before_script: skip
-      script:
-        - gem install bundler #Install Bundler
-        - bundle install #Install Required Gems
-        - gem list #gem list
-        - PATH=$(pwd)/bin:$PATH bundle exec rake vagrant:validate
-        - PATH=$(pwd)/bin:$PATH bundle exec rake --tasks
+    # - stage: Vagrant validate
+    #   before_script: skip
+    #   script:
+    #     - gem install bundler #Install Bundler
+    #     - bundle install #Install Required Gems
+    #     - gem list #gem list
+    #     - PATH=$(pwd)/bin:$PATH bundle exec rake vagrant:validate
+    #     - PATH=$(pwd)/bin:$PATH bundle exec rake --tasks
     - stage: build_base
       script:
-        - pwd
-        - ls -lai
-        - sudo make build_base
+      - pwd
+      - ls -lai
+      - sudo make build_base
+    - stage: build_env
+      script: sudo make build_base
+    - stage: build_openjdk11
+      script: sudo make build_openjdk11
+    - stage: build_tomcat9030
+      script: sudo make build_tomcat9030
+    - stage: config_admin
+      script: sudo make config_admin
+    - stage: deploy_sampleapp
+      script: sudo make deploy_sampleapp
+    - stage: build_finalize
+      script: sudo make build_finalize
+    - stage: list images
+      script: sudo docker image ls
+    # - stage: build_all
+    #   script: sudo make build_all
 after_success:
-    - stage: Continuous Deployment Step, one button to deploy docker image
+    - stage: Finalize
       script:
         - sudo docker image ls
 notifications:
