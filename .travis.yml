@@ -1,5 +1,6 @@
 language: ruby
 dist: disco
+sudo: required
 rvm:
   - 2.5
 env:
@@ -8,14 +9,14 @@ env:
 services:
   - docker
 before_install:
-  - apt-get -qq update
+  - sudo apt-get -qq update
   - curl -o vagrant.zip vagrant.zip https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_linux_amd64.zip && unzip -d bin vagrant.zip
   - vagrant version
 jobs:
   include:
     - stage: Vagrant validate
       before_script:
-        - bundle install
+        - sudo bundle install
       script:
         - PATH=$(pwd)/bin:$PATH bundle exec rake
         - PATH=$(pwd)/bin:$PATH bundle exec rake vagrant:validate
