@@ -26,6 +26,8 @@ jobs:
         - PATH=$(pwd)/bin:$PATH bundle exec rake --tasks
     - stage: build_base
       script:
+        - pwd
+        - ls -lai
         - sudo make build_base
 after_success:
     - stage: Continuous Deployment Step, one button to deploy docker image

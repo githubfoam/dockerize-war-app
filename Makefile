@@ -1,5 +1,5 @@
 build_base:
-	@docker build . --target build_base -t centos7/tomcat:build_base --file /vagrant/dockerfiles/Dockerfile.tomcat.multi
+	@docker build . --target build_base -t centos7/tomcat:build_base --file /dockerfiles/Dockerfile.tomcat.multi
 
 build_env:
 	@docker build . --target build_env -t centos7/tomcat:build_env --file /vagrant/dockerfiles/Dockerfile.tomcat.multi
