@@ -46,7 +46,6 @@ jobs:
       - sudo docker image ls
       - sudo make run_sampleapp
       - sudo docker container ls
-      - curl http://localhost:8080/SampleWebapp
 after_success:
     - stage: Finalize
       script: sudo docker image ls
