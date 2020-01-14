@@ -1,7 +1,7 @@
 # dockerize-war-app
 
 Travis (.com) dev branch:
-[![Build Status](https://travis-ci.com/githubfoam/dockerize-war-app.svg?branch=dev)](https://travis-ci.com/githubfoam/dockerize-war-app)  
+[![Build Status](https://travis-ci.com/githubfoam/dockerize-war-app.svg?branch=master)](https://travis-ci.com/githubfoam/dockerize-war-app)  
 
 building tomcat-9.0.30 image with OpenJDK 11 JDK
 
