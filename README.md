@@ -1,5 +1,10 @@
 # dockerize-war-app
+
+Travis (.com) dev branch:
+[![Build Status](https://travis-ci.com/githubfoam/dockerize-war-app.svg?branch=dev)](https://travis-ci.com/githubfoam/dockerize-war-app)  
+
 building tomcat-9.0.30 image with OpenJDK 11 JDK
+
 ~~~~
 
 "sudo docker build --target build_base -t centos7/tomcat:build_base --file /vagrant/dockerfiles/2/Dockerfile.tomcat.multi ."
