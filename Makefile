@@ -17,7 +17,10 @@ deploy_sampleapp:
 	@docker build . --target deploy_sampleapp -t centos7/tomcat:deploy_sampleapp --file dockerfiles/Dockerfile.tomcat.multi
 
 build_finalize:
-	@docker build . --target build_finalize -t centos7/tomcat:build_finalize --file dockerfiles/Dockerfile.tomcat.multi
+	@docker build . --target build_finalize -t centos7/tomcat:sampleapp-openjdk11-tomcat9030-centos7 --file dockerfiles/Dockerfile.tomcat.multi
+
+run_sampleapp:
+		@sudo docker container run -it -d --name sampleapp -p 8080:8080 -p 8009:8009 centos7/tomcat:sampleapp-openjdk11-tomcat9030-centos7
 
 clean:
 	@docker rmi $(docker images -q -f dangling=true)

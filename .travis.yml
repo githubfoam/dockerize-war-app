@@ -16,14 +16,14 @@ before_install:
   - vagrant version
 jobs:
   include:
-    # - stage: Vagrant validate
-    #   before_script: skip
-    #   script:
-    #     - gem install bundler #Install Bundler
-    #     - bundle install #Install Required Gems
-    #     - gem list #gem list
-    #     - PATH=$(pwd)/bin:$PATH bundle exec rake vagrant:validate
-    #     - PATH=$(pwd)/bin:$PATH bundle exec rake --tasks
+    - stage: vagrant validate
+      before_script: skip
+      script:
+        - gem install bundler #Install Bundler
+        - bundle install #Install Required Gems
+        - gem list #gem list
+        - PATH=$(pwd)/bin:$PATH bundle exec rake vagrant:validate
+        - PATH=$(pwd)/bin:$PATH bundle exec rake --tasks
     - stage: build_base
       script: sudo make build_base
     - stage: build_env
@@ -39,11 +39,14 @@ jobs:
     - stage: build_finalize
       script:
       - sudo make build_finalize
+    - stage: test sampleapp
+      script:
+      - sudo make run_sampleapp
+      - curl http://localhost:8080/SampleWebapp
+    - stage: build_all
+      script:
+      - sudo make build_all
       - sudo docker image ls
-    # - stage: list images
-    #   script: sudo docker image ls
-    # - stage: build_all
-    #   script: sudo make build_all
 after_success:
     - stage: Finalize
       script: sudo docker image ls
