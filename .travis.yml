@@ -2,7 +2,8 @@ language: ruby
 dist: disco
 sudo: required
 rvm:
-  - 2.5
+  # - 2.5
+  - 2.7
 env:
   global:
   - VAGRANT_VERSION="2.2.6"
@@ -17,9 +18,9 @@ before_install:
 jobs:
   include:
     - stage: Vagrant validate
-      before_script:
-        - sudo bundler install
+      before_script: skip
       script:
+        - sudo bundler install
         - PATH=$(pwd)/bin:$PATH bundle exec rake
         - PATH=$(pwd)/bin:$PATH bundle exec rake vagrant:validate
         - PATH=$(pwd)/bin:$PATH bundle exec rake --tasks
