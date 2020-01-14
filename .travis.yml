@@ -39,14 +39,18 @@ jobs:
     - stage: build_finalize
       script:
       - sudo make build_finalize
-    - stage: test sampleapp
-      script:
       - sudo make run_sampleapp
       - curl http://localhost:8080/SampleWebapp
+    # - stage: test sampleapp
+    #   script:
+    #   - sudo make run_sampleapp
+    #   - curl http://localhost:8080/SampleWebapp
     - stage: build_all
       script:
       - sudo make build_all
       - sudo docker image ls
+      - sudo make run_sampleapp
+      - curl http://localhost:8080/SampleWebapp      
 after_success:
     - stage: Finalize
       script: sudo docker image ls
