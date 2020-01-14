@@ -37,15 +37,16 @@ jobs:
     - stage: deploy_sampleapp
       script: sudo make deploy_sampleapp
     - stage: build_finalize
-      script: sudo make build_finalize
-    - stage: list images
-      script: sudo docker image ls
+      script:
+      - sudo make build_finalize
+      - sudo docker image ls
+    # - stage: list images
+    #   script: sudo docker image ls
     # - stage: build_all
     #   script: sudo make build_all
 after_success:
     - stage: Finalize
-      script:
-        - sudo docker image ls
+      script: sudo docker image ls
 notifications:
   #email: false
    email:
