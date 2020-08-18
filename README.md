@@ -1,10 +1,25 @@
 # dockerize-war-app
 
+
+
 Travis (.com) dev branch:
 [![Build Status](https://travis-ci.com/githubfoam/dockerize-war-app.svg?branch=master)](https://travis-ci.com/githubfoam/dockerize-war-app)  
 
-building tomcat-9.0.30 image with OpenJDK 11 JDK
+update tomcate version
+~~~~
+merge test branch
 
+ENV TOMCAT_MAJOR_VERSION "9"
+ENV TOMCAT_VERSION $TOMCAT_MAJOR_VERSION".0.37"
+ENV TOMCAT_DOWNLOAD_URL https://downloads.apache.org/tomcat/tomcat-$TOMCAT_MAJOR_VERSION/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
+RUN wget -q $TOMCAT_DOWNLOAD_URL && \
+
+C:\Users\verona\github\dockerize-war-app\dockerfiles\Dockerfile.tomcat.multi
+
+http://tomcat.apache.org/
+~~~~
+
+building tomcat-9.0.30 image with OpenJDK 11 JDK
 ~~~~
 
 "sudo docker build --target build_base -t centos7/tomcat:build_base --file /vagrant/dockerfiles/2/Dockerfile.tomcat.multi ."
@@ -61,4 +76,9 @@ $ sudo docker run -it centos7/tomcat:build_base
 [root@66f5829da2e4 /]# ls -l /usr/lib/jvm
 total 0
 drwxr-xr-x. 6 root root 68 Jan 10 17:54 java-11-openjdk-11.0.5.10-0.el7_7.x86_64
+~~~~
+
+~~~~
+KVM/Installation
+https://help.ubuntu.com/community/KVM/Installation
 ~~~~
